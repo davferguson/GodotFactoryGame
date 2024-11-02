@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://btes4u8bojoxq"]
+
+[ext_resource type="Script" path="res://factory/factory_component.gd" id="1_6u37n"]
+[ext_resource type="Resource" uid="uid://c3svxrhdwgnn5" path="res://data/recipes/bow_recipe.tres" id="2_bfeny"]
+[ext_resource type="Script" path="res://addons/inventory_base/scripts/inventory_component.gd" id="2_qka1t"]
+[ext_resource type="PackedScene" uid="uid://dhlxvteasm46s" path="res://addons/inventory_base/demo/scenes/inventory_container_template.tscn" id="3_3utjp"]
+[ext_resource type="Resource" uid="uid://cdqiq2230mgp7" path="res://addons/inventory_base/demo/data/items/leather_item.tres" id="3_q6b6r"]
+[ext_resource type="Script" path="res://addons/inventory_base/scripts/inventory_slot_data.gd" id="4_a5hng"]
+
+[sub_resource type="Gradient" id="Gradient_5ayaj"]
+colors = PackedColorArray(0.733333, 0, 0, 1, 0.47283, 0.449425, 0.55188, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cq6i8"]
+gradient = SubResource("Gradient_5ayaj")
+
+[sub_resource type="Resource" id="Resource_rmdt4"]
+script = ExtResource("4_a5hng")
+item = ExtResource("3_q6b6r")
+amount = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilj5p"]
+size = Vector2(64, 64)
+
+[node name="FactoryDemo" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_cq6i8")
+
+[node name="FactoryComponent" type="Node" parent="." node_paths=PackedStringArray("inventory_component")]
+script = ExtResource("1_6u37n")
+inventory_component = NodePath("../InventoryComponent2D")
+recipe = ExtResource("2_bfeny")
+test_insert_item = SubResource("Resource_rmdt4")
+
+[node name="InventoryComponent2D" type="Node" parent="." node_paths=PackedStringArray("interact_area")]
+script = ExtResource("2_qka1t")
+interact_area = NodePath("../Area2D")
+inventory_template = ExtResource("3_3utjp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ilj5p")

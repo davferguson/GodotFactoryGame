@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://c3svxrhdwgnn5"]
+
+[ext_resource type="Script" path="res://addons/inventory_base/scripts/inventory_slot_data.gd" id="1_8tuqx"]
+[ext_resource type="Resource" uid="uid://dyc4fdurh70t8" path="res://addons/inventory_base/demo/data/items/wood_plank_item.tres" id="2_fss5k"]
+[ext_resource type="Script" path="res://data_types/recipe.gd" id="2_qs0ng"]
+[ext_resource type="Resource" uid="uid://djb7xpk38wopc" path="res://addons/inventory_base/demo/data/items/rope_item.tres" id="3_rpgjx"]
+[ext_resource type="Resource" uid="uid://cdqiq2230mgp7" path="res://addons/inventory_base/demo/data/items/leather_item.tres" id="4_7qfvy"]
+[ext_resource type="Resource" uid="uid://c0w7gdfbb5u73" path="res://addons/inventory_base/demo/data/items/bow_item.tres" id="5_cdsad"]
+
+[sub_resource type="Resource" id="Resource_mckbh"]
+script = ExtResource("1_8tuqx")
+item = ExtResource("2_fss5k")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_b67f2"]
+script = ExtResource("1_8tuqx")
+item = ExtResource("3_rpgjx")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_0i0xw"]
+script = ExtResource("1_8tuqx")
+item = ExtResource("4_7qfvy")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_gf8vs"]
+script = ExtResource("1_8tuqx")
+item = ExtResource("5_cdsad")
+amount = 1
+
+[resource]
+script = ExtResource("2_qs0ng")
+inputs = Array[ExtResource("1_8tuqx")]([SubResource("Resource_mckbh"), SubResource("Resource_b67f2"), SubResource("Resource_0i0xw")])
+outputs = Array[ExtResource("1_8tuqx")]([SubResource("Resource_gf8vs")])
+crafting_time = 10
